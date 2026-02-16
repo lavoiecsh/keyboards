@@ -10,12 +10,16 @@
 
 // Layers
 #define LTyp 0
-#define LRPG 1
-#define LMMO 2
-#define LNav 3
-#define LSym 4
-#define LSys 5
-#define LMou 6
+#define LSym 1
+#define LNav 2
+#define LMou 3
+#define LSys 4
+#define LRPG 5
+#define LMMO 6
+
+#define BOTTOM_LEFT  &mo LSys &kp BACKSPACE &shl LSym LSym &lt LNav ESC
+#define BOTTOM_RIGHT &shk LSHIFT LSHIFT &kp SPACE &kp DELETE &shk RALT INSERT
+#define POTS &out OUT_TOG &kp C_MUTE
 
 nice_view_spi: &spi0 {
   compatible = "nordic,nrf-spim";
@@ -108,78 +112,75 @@ nice_view_spi: &spi0 {
         compatible = "zmk,keymap";
 
         layer_main {
-            label = "main";
-            bindings = <
-&kp Q        &kp W        &kp F        &kp P          &kp G                                                   &kp J               &kp L               &kp U             &kp Y           &kp APOS
-&kp A        &kp R        &kp S        &kp T          &kp D                                                   &kp H               &kp N               &kp E             &kp I           &kp O   
-&mt LCTL Z   &mt LALT X   &kp C        &kp V          &kp B               &out OUT_TOG     &kp C_MUTE         &kp K               &kp M               &kp COMMA         &mt LALT DOT    &mt LCTL FSLH
-                          &mo LSys     &kp BACKSPACE  &shl LSym LSym      &lt LNav ESC     &shk LSHIFT LSHIFT &kp SPACE           &kp DELETE          &lt LSys INSERT
-            >;
-
+            label = "CLMK";
             sensor-bindings = <&layer_enc LRPG LTyp &vol_enc>;
+            bindings = <
+&kp Q        &kp W        &kp F        &kp P   &kp G          &kp J        &kp L   &kp U       &kp Y          &kp APOS
+&kp A        &kp R        &kp S        &kp T   &kp D          &kp H        &kp N   &kp E       &kp I          &kp O   
+&mt LCTL Z   &mt LALT X   &mt LGUI B   &kp V   &kp B   POTS   &mt LGUI K   &kp M   &kp COMMA   &mt LALT DOT   &mt LCTL FSLH
+BOTTOM_LEFT BOTTOM_RIGHT
+            >;
+        };
+
+        layer_symbols {
+            label = "SYM";
+            bindings = <
+&kp GRAVE   &kp N7   &kp N8   &kp N9   &none              &kp BSLH       &kp UNDER   &kp LBKT   &kp RBKT   &kp PIPE
+&kp N0      &kp N4   &kp N5   &kp N6   &kp ENTER          &kp ENTER      &kp MINUS   &kp LPAR   &kp RPAR   &kp SEMI
+&none       &kp N1   &kp N2   &kp N3   &none       POTS   &mt LGUI TAB   &kp EQUAL   &kp LT     &kp GT     &kp QMARK
+BOTTOM_LEFT BOTTOM_RIGHT
+            >;
+        };
+
+        layer_navigation {
+            label = "NAV";
+            bindings = <
+&none      &none      &none      &none       &studio_unlock     &none       &kp HOME   &kp UP     &kp PAGE_UP     &kp PSCRN  
+&none      &kp ESC    &kp TAB    &mo LSys    &kp ENTER          &kp ENTER   &kp LEFT   &none      &kp RIGHT       &kp SEMI
+&kp LCTL   &kp LALT   &kp LGUI   &mo LMou    &none       POTS   &kp TAB     &kp END    &kp DOWN   &kp PAGE_DOWN   &none
+BOTTOM_LEFT BOTTOM_RIGHT
+            >;
+        };
+
+        layer_mouse {
+            label = "MOU";
+            bindings = <
+&trans   &trans   &trans   &trans   &trans          &mkp MB5    &mkp MB4         &mmv MOVE_UP     &msc SCRL_UP      &kp PSCRN  
+&trans   &trans   &trans   &trans   &trans          &kp ENTER   &mmv MOVE_LEFT   &mkp MB1         &mmv MOVE_RIGHT   &mkp MB2
+&trans   &trans   &trans   &trans   &trans   POTS   &kp TAB     &mkp MB3         &mmv MOVE_DOWN   &msc SCRL_DOWN    &none
+BOTTOM_LEFT BOTTOM_RIGHT
+            >;
+        };
+
+        layer_system {
+            label = "SYS";
+            bindings = <
+&trans   &trans   &trans   &trans   &trans         &none   &kp F1   &kp F2    &kp F3    &kp F4
+&trans   &trans   &trans   &trans   &trans         &none   &kp F5   &kp F6    &kp F7    &kp F8
+&trans   &trans   &trans   &trans   &trans  POTS   &none   &kp F9   &kp F10   &kp F11   &kp F12
+BOTTOM_LEFT BOTTOM_RIGHT
+            >;
         };
 
         layer_gaming_arpg {
-            label = "arpg";
+            label = "RPG";
+            sensor-bindings = <&layer_enc LMMO LTyp &vol_enc>;
             bindings = <
 &kp N1     &kp N2     &kp N3          &kp N4          &kp N5                                     &kp KP_NUMLOCK  &kp KP_N7      &kp KP_N8      &kp KP_N9  &kp PSCRN
 &kp Q      &kp W      &kp E           &kp R           &kp T                                      &emt            &kp KP_N4      &kp KP_N5      &kp KP_N6  &kp KP_N0 
 &kp A      &kp S      &kp D           &kp F           &kp G          &out OUT_TOG     &kp C_MUTE &kp KP_DOT      &kp KP_N1      &kp KP_N2      &kp KP_N3  &fmt
                       &kp LALT        &kp LSHIFT      &kp LCTL       &lt LNav ESC     &mo LSys   &kp SPACE       &kp BACKSPACE  &lt LSys INSERT
             >;
-
-            sensor-bindings = <&layer_enc LMMO LTyp &vol_enc>;
         };
 
         layer_gaming_mmo {
-            label = "mmo";
+            label = "MMO";
+            sensor-bindings = <&layer_enc LRPG LTyp &vol_enc>;
             bindings = <
 &kp TAB    &kp Q      &kp W           &kp E           &kp R                                       &kp KP_NUMLOCK  &kp KP_N7      &kp KP_N8  &kp KP_N9  &kp PSCRN
 &kp GRAVE  &kp A      &kp S           &kp D           &kp F                                       &emt            &kp KP_N4      &kp KP_N5  &kp KP_N6  &kp KP_N0 
 &kp N1     &kp N2     &kp N3          &kp N4          &kp N5         &out OUT_TOG     &kp C_MUTE  &kp KP_DOT      &kp KP_N1      &kp KP_N2  &kp KP_N3  &fmt 
                       &kp LALT        &kp LSHIFT      &kp LCTL       &lt LNav ESC     &mo LSys    &kp SPACE       &kp BACKSPACE  &lt LSys INSERT
-            >;
-
-            sensor-bindings = <&layer_enc LRPG LTyp &vol_enc>;
-        };
-
-        layer_navigation {
-            label = "nav";
-            bindings = <
-&none        &none            &none        &none          &none                       &none        &kp HOME       &kp UP          &kp PAGE_UP         &kp PSCRN  
-&mo LMou     &kp ESC          &kp TAB      &kp GRAVE      &kp ENTER                   &kp ENTER    &kp LEFT       &none           &kp RIGHT           &kp SEMI
-&kp LCTL     &kp LALT         &kp LGUI     &kp LSHIFT     &kp TAB   &trans   &trans   &kp TAB      &kp END        &kp DOWN        &kp PAGE_DOWN       &caps_word
-                              &trans       &trans         &trans    &trans   &trans   &trans       &trans         &trans
-            >;
-        };
-
-        layer_symbols {
-            label = "sym";
-            bindings = <
-&kp GRAVE       &kp N7          &kp N8         &kp N9           &none                        &kp BSLH   &kp UNDER         &kp LBKT        &kp RBKT         &kp PIPE
-&kp N0          &kp N4          &kp N5         &kp N6           &kp ENTER                    &kp ENTER  &kp MINUS         &kp LPAR        &kp RPAR         &kp SEMI
-&none           &kp N1          &kp N2         &kp N3           &kp TAB    &trans   &trans   &kp TAB    &kp EQUAL         &kp LT          &kp GT           &kp QMARK
-                                &trans         &trans           &trans     &trans   &trans   &trans     &trans            &trans
-            >;
-        };
-
-        layer_system {
-            label = "sys";
-            bindings = <
-&kp RA(N)         &none            &none           &none              &none                     &none      &kp F1     &kp F2     &kp F3     &kp F4
-&none             &kp RA(GRAVE)    &kp RA(S)       &kp RA(E)          &kp RA(U)                 &none      &kp F5     &kp F6     &kp F7     &kp F8
-&mt LCTL RA(APOS) &mt LALT RA(N6)  &mt LGUI RA(C)  &mt LSHIFT RA(Q)   &none  &none    &none     &none      &kp F9     &kp F10    &kp F11    &kp F12
-                                   &none           &none              &none  &none    &none     &none      &none      &none
-            >;
-        };
-
-        layer_mouse {
-            label = "mous";
-            bindings = <
-&none        &none            &none        &none          &none                       &mkp MB5     &mkp MB4       &mmv MOVE_UP    &msc SCRL_UP        &kp PSCRN  
-&mo LMou     &kp ESC          &kp TAB      &kp GRAVE      &kp ENTER                   &kp ENTER    &mmv MOVE_LEFT &mkp MB1        &mmv MOVE_RIGHT     &mkp MB2
-&kp LCTL     &kp LALT         &kp LGUI     &kp LSHIFT     &kp TAB   &trans   &trans   &kp TAB      &mkp MB3       &mmv MOVE_DOWN  &msc SCRL_DOWN      &caps_word
-                              &trans       &trans         &trans    &trans   &trans   &trans       &trans         &trans
             >;
         };
     };
