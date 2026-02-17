@@ -117,7 +117,7 @@ nice_view_spi: &spi0 {
             bindings = <
 &kp Q        &kp W        &kp F        &kp P   &kp G          &kp J        &kp L   &kp U       &kp Y          &kp APOS
 &kp A        &kp R        &kp S        &kp T   &kp D          &kp H        &kp N   &kp E       &kp I          &kp O   
-&mt LCTL Z   &mt LALT X   &mt LGUI B   &kp V   &kp B   POTS   &mt LGUI K   &kp M   &kp COMMA   &mt LALT DOT   &mt LCTL FSLH
+&mt LCTL Z   &mt LALT X   &mt LGUI C   &kp V   &kp B   POTS   &mt LGUI K   &kp M   &kp COMMA   &mt LALT DOT   &mt LCTL FSLH
 BOTTOM_LEFT BOTTOM_RIGHT
             >;
         };
