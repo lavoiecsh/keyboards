@@ -135,7 +135,7 @@ BOTTOM_LEFT BOTTOM_RIGHT
         layer_navigation {
             label = "NAV";
             bindings = <
-&none      &none      &none      &none       &studio_unlock     &none       &kp HOME   &kp UP     &kp PAGE_UP     &kp PSCRN  
+&none      &none      &none      &none       &none              &none       &kp HOME   &kp UP     &kp PAGE_UP     &kp PSCRN  
 &none      &kp ESC    &kp TAB    &mo LSys    &kp ENTER          &kp ENTER   &kp LEFT   &none      &kp RIGHT       &kp SEMI
 &kp LCTL   &kp LALT   &kp LGUI   &mo LMou    &none       POTS   &kp TAB     &kp END    &kp DOWN   &kp PAGE_DOWN   &none
 BOTTOM_LEFT BOTTOM_RIGHT
