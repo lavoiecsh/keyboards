@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# delete old prev
+rm -rf firmware.prev &> /dev/null
+# move current firmware to prev
+mv firmware firmware.prev &> /dev/null
+# push commit
+git push
+# possibly wait a couple of seconds
+sleep 2
+# get run id
+run=$(gh run list -L 1 --json databaseId -q '.[0].databaseId')
+# wait until run is completed
+gh run watch --exit-status --compact $run &> /dev/null
+# message and fail if run has failed
+if [ $? -ne 0 ]; then
+    echo "Run has not successfully completed, opening page"
+    gh run view $run
+    exit 1
+fi
+# download
+gh run download $run
+# compare files with previous firmware, print different
+for f in $(ls -1 firmware); do
+    diff -q firmware/$f firmware.prev/$f
+done
+
