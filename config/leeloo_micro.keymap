@@ -22,13 +22,13 @@
 #define BOTTOM_RIGHT &shk LSHIFT LSHIFT &kp SPACE &kp DELETE &lt LAlt INSERT
 #define POTS &out OUT_TOG &kp C_MUTE
 
-#define dead_grave kp RA(`)
+#define dead_grave kp RA(GRAVE)
 #define dead_acute kp RA(e)
 #define dead_diaeresis kp RA(u)
 #define dead_circumflex_macos kp RA(6)
 #define dead_circumflex_linux kp RA(i)
 #define dead_tilde kp RA(q)
-#define ae kp RA(')
+#define ae kp RA(APOS)
 #define oe kp RA(q)
 #define eszett kp RA(s)
 #define cedilla kp RA(c)
