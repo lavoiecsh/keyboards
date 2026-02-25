@@ -22,6 +22,17 @@
 #define BOTTOM_RIGHT &shk LSHIFT LSHIFT &kp SPACE &kp DELETE &lt LAlt INSERT
 #define POTS &out OUT_TOG &kp C_MUTE
 
+#define dead_grave kp RA(`)
+#define dead_acute kp RA(e)
+#define dead_diaeresis kp RA(u)
+#define dead_circumflex_macos kp RA(6)
+#define dead_circumflex_linux kp RA(i)
+#define dead_tilde kp RA(q)
+#define ae kp RA(')
+#define oe kp RA(q)
+#define eszett kp RA(s)
+#define cedilla kp RA(c)
+
 nice_view_spi: &spi0 {
   compatible = "nordic,nrf-spim";
   pinctrl-0 = <&spi0_default>;
@@ -107,20 +118,6 @@ nice_view_spi: &spi0 {
             #sensor-binding-cells = <2>;
             bindings = <&to>, <&to>;
         };
-
-        ZMK_MACRO(dead_grave, bindings = <&kp RA(`)>;)
-        ZMK_MACRO(dead_acute, bindings = <&kp RA(e)>;)
-        ZMK_MACRO(dead_diaeresis, bindings = <&kp RA(u)>;)
-        ZMK_MACRO(dead_circumflex_macos, bindings = <&kp RA(6)>;)
-        ZMK_MACRO(dead_circumflex_linux, bindings = <&kp RA(i)>;)
-        ZMK_MACRO(dead_tilde, bindings = <&kp RA(q)>;)
-        ZMK_MACRO(ae, bindings = <&kp RA(')>;)
-        ZMK_MACRO(oe, bindings = <&kp RA(q)>;)
-        ZMK_MACRO(eszett, bindings = <&kp RA(s)>;)
-        ZMK_MACRO(cedilla, bindings = <&kp RA(c)>;)
-        
-        // dead_circumflex: Mac -> RA(6), Linux -> RA(i)
-        // c_cedilla: Mac -> RA(c) + c, Linux -> RA(c)
     };
 
     keymap {

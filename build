@@ -5,9 +5,9 @@ rm -rf firmware.prev &> /dev/null
 # move current firmware to prev
 mv firmware firmware.prev &> /dev/null
 # push commit
-git push
+git push > /dev/null
 # possibly wait a couple of seconds
-sleep 2
+sleep 5
 # get run id
 run=$(gh run list -L 1 --json databaseId -q '.[0].databaseId')
 # wait until run is completed
