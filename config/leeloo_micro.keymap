@@ -147,7 +147,7 @@ BOTTOM_LEFT BOTTOM_RIGHT
         layer_right_alt {
             label = "ALT";
             bindings = <
-&dead_tilde   &dead_circumflex_macos   &trans     &trans        &trans                   &trans   &trans   &trans   &trans   &trans
+&dead_tilde   &kp RA(N6)               &trans     &trans        &trans                   &trans   &trans   &trans   &trans   &trans
 &trans        &dead_grave              &eszett    &dead_acute   &dead_diaeresis          &trans   &trans   &trans   &trans   &trans
 &ae           &dead_circumflex_linux   &cedilla   &oe           &trans            POTS   &trans   &trans   &trans   &trans   &trans
 BOTTOM_LEFT BOTTOM_RIGHT
