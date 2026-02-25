@@ -11,14 +11,15 @@
 // Layers
 #define LTyp 0
 #define LSym 1
-#define LNav 2
-#define LMou 3
-#define LSys 4
-#define LRPG 5
-#define LMMO 6
+#define LAlt 2
+#define LNav 3
+#define LMou 4
+#define LSys 5
+#define LRPG 6
+#define LMMO 7
 
 #define BOTTOM_LEFT  &mo LSys &kp BACKSPACE &shl LSym LSym &lt LNav ESC
-#define BOTTOM_RIGHT &shk LSHIFT LSHIFT &kp SPACE &kp DELETE &shk RALT INSERT
+#define BOTTOM_RIGHT &shk LSHIFT LSHIFT &kp SPACE &kp DELETE &lt LAlt INSERT
 #define POTS &out OUT_TOG &kp C_MUTE
 
 nice_view_spi: &spi0 {
@@ -30,7 +31,7 @@ nice_view_spi: &spi0 {
 };
 
 &mt {
-    tapping-term-ms = <150>;
+    tapping-term-ms = <200>;
     flavor = "tap-preferred";
     quick-tap-ms = <0>;
 };
@@ -106,6 +107,20 @@ nice_view_spi: &spi0 {
             #sensor-binding-cells = <2>;
             bindings = <&to>, <&to>;
         };
+
+        ZMK_MACRO(dead_grave, bindings = <&kp RA(`)>;)
+        ZMK_MACRO(dead_acute, bindings = <&kp RA(e)>;)
+        ZMK_MACRO(dead_diaeresis, bindings = <&kp RA(u)>;)
+        ZMK_MACRO(dead_circumflex_macos, bindings = <&kp RA(6)>;)
+        ZMK_MACRO(dead_circumflex_linux, bindings = <&kp RA(i)>;)
+        ZMK_MACRO(dead_tilde, bindings = <&kp RA(q)>;)
+        ZMK_MACRO(ae, bindings = <&kp RA(')>;)
+        ZMK_MACRO(oe, bindings = <&kp RA(q)>;)
+        ZMK_MACRO(eszett, bindings = <&kp RA(s)>;)
+        ZMK_MACRO(cedilla, bindings = <&kp RA(c)>;)
+        
+        // dead_circumflex: Mac -> RA(6), Linux -> RA(i)
+        // c_cedilla: Mac -> RA(c) + c, Linux -> RA(c)
     };
 
     keymap {
@@ -128,6 +143,16 @@ BOTTOM_LEFT BOTTOM_RIGHT
 &kp GRAVE   &kp N7   &kp N8   &kp N9   &none              &kp BSLH       &kp UNDER   &kp LBKT   &kp RBKT   &kp PIPE
 &kp N0      &kp N4   &kp N5   &kp N6   &kp ENTER          &kp ENTER      &kp MINUS   &kp LPAR   &kp RPAR   &kp SEMI
 &none       &kp N1   &kp N2   &kp N3   &none       POTS   &mt LGUI TAB   &kp EQUAL   &kp LT     &kp GT     &kp QMARK
+BOTTOM_LEFT BOTTOM_RIGHT
+            >;
+        };
+
+        layer_right_alt {
+            label = "ALT";
+            bindings = <
+&dead_tilde   &dead_circumflex_macos   &trans     &trans        &trans                   &trans   &trans   &trans   &trans   &trans
+&trans        &dead_grave              &eszett    &dead_acute   &dead_diaeresis          &trans   &trans   &trans   &trans   &trans
+&ae           &dead_circumflex_linux   &cedilla   &oe           &trans            POTS   &trans   &trans   &trans   &trans   &trans
 BOTTOM_LEFT BOTTOM_RIGHT
             >;
         };
