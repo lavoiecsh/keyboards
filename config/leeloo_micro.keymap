@@ -22,17 +22,6 @@
 #define BOTTOM_RIGHT &shk LSHIFT LSHIFT &kp SPACE &kp DELETE &lt LAlt INSERT
 #define POTS &out OUT_TOG &kp C_MUTE
 
-#define dead_grave kp RA(GRAVE)
-#define dead_acute kp RA(e)
-#define dead_diaeresis kp RA(u)
-#define dead_circumflex_macos kp RA(N6)
-#define dead_circumflex_linux kp RA(i)
-#define dead_tilde kp RA(n)
-#define ae kp RA(APOS)
-#define oe kp RA(q)
-#define eszett kp RA(s)
-#define cedilla kp RA(c)
-
 nice_view_spi: &spi0 {
   compatible = "nordic,nrf-spim";
   pinctrl-0 = <&spi0_default>;
@@ -147,9 +136,9 @@ BOTTOM_LEFT BOTTOM_RIGHT
         layer_right_alt {
             label = "ALT";
             bindings = <
-&dead_tilde   &kp RA(N6)               &trans     &trans        &trans                   &trans   &trans   &trans   &trans   &trans
-&trans        &dead_grave              &eszett    &dead_acute   &dead_diaeresis          &trans   &trans   &trans   &trans   &trans
-&ae           &dead_circumflex_linux   &cedilla   &oe           &trans            POTS   &trans   &trans   &trans   &trans   &trans
+&kp RA(n)      &kp RA(N6)      &trans      &trans      &trans             &trans   &trans   &trans   &trans   &trans
+&trans         &kp RA(GRAVE)   &kp RA(s)   &kp RA(e)   &kp RA(u)          &trans   &trans   &trans   &trans   &trans
+&kp RA(APOS)   &kp RA(i)       &kp RA(c)   &kp RA(q)   &trans      POTS   &trans   &trans   &trans   &trans   &trans
 BOTTOM_LEFT BOTTOM_RIGHT
             >;
         };
