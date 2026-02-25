@@ -136,9 +136,9 @@ BOTTOM_LEFT BOTTOM_RIGHT
         layer_right_alt {
             label = "ALT";
             bindings = <
-&kp RA(n)      &kp RA(N6)      &trans      &trans      &trans             &trans   &trans   &trans   &trans   &trans
-&trans         &kp RA(GRAVE)   &kp RA(s)   &kp RA(e)   &kp RA(u)          &trans   &trans   &trans   &trans   &trans
-&kp RA(APOS)   &kp RA(i)       &kp RA(c)   &kp RA(q)   &trans      POTS   &trans   &trans   &trans   &trans   &trans
+&kp RA(N)      &kp RA(N6)      &trans      &trans      &trans             &trans   &trans   &trans   &trans   &trans
+&trans         &kp RA(GRAVE)   &kp RA(S)   &kp RA(E)   &kp RA(U)          &trans   &trans   &trans   &trans   &trans
+&kp RA(APOS)   &kp RA(I)       &kp RA(C)   &kp RA(Q)   &trans      POTS   &trans   &trans   &trans   &trans   &trans
 BOTTOM_LEFT BOTTOM_RIGHT
             >;
         };
