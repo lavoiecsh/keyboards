@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# delete old prev
-rm -rf firmware.prev &> /dev/null
-# move current firmware to prev
-mv firmware firmware.prev &> /dev/null
 # push commit
 git push > /dev/null
 # possibly wait a couple of seconds
@@ -18,6 +14,10 @@ if [ $? -ne 0 ]; then
     gh run view $run
     exit 1
 fi
+# delete old prev
+rm -rf firmware.prev &> /dev/null
+# move current firmware to prev
+mv firmware firmware.prev &> /dev/null
 # download
 gh run download $run
 # compare files with previous firmware, print different
