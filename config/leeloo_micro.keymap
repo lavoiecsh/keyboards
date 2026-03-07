@@ -18,8 +18,10 @@
 #define LRPG 6
 #define LMMO 7
 
-#define BOTTOM_LEFT  &mo LSys &kp BACKSPACE &shl LSym LSym &lt LNav ESC
-#define BOTTOM_RIGHT &shk LSHIFT LSHIFT &kp SPACE &kp DELETE &lt LAlt INSERT
+#define BOTTOM_LEFT           &mo LSys      &kp BACKSPACE   &stck_sym       &lt LNav ESC
+#define BOTTOM_LEFT_GAMING    &kp LALT      &kp LSHIFT      &kp LCTL        &lt LNav ESC     
+#define BOTTOM_RIGHT          &stck_shift   &kp SPACE       &kp DELETE      &lt LAlt INSERT
+#define BOTTOM_RIGHT_GAMING   &mo LSys      &kp SPACE       &kp BACKSPACE   &lt LSys TAB
 #define POTS &out OUT_TOG &kp C_MUTE
 
 nice_view_spi: &spi0 {
@@ -52,19 +54,19 @@ nice_view_spi: &spi0 {
 
 / {
     behaviors {
-        shk: sticky_hold_key {
+        stck_shft: sticky_hold_shift {
             compatible = "zmk,behavior-hold-tap";
-            label = "STICKY_HOLD_KEY";
-            #binding-cells = <2>;
-            bindings = <&kp>, <&sk>;
+            label = "STICKY_HOLD_SHIFT";
+            #binding-cells = <0>;
+            bindings = <&kp LSHIFT>, <&sk LSHIFT>;
             tapping-term-ms = <200>;
         };
 
-        shl: sticky_hold_layer {
+        stck_sym: sticky_hold_layer {
             compatible = "zmk,behavior-hold-tap";
-            label = "STICKY_HOLD_LAYER";
-            #binding-cells = <2>;
-            bindings = <&mo>, <&sl>;
+            label = "STICKY_HOLD_SYMBOL_LAYER";
+            #binding-cells = <0>;
+            bindings = <&mo LSym>, <&sl LSym>;
             tapping-term-ms = <200>;
         };
 
@@ -177,10 +179,10 @@ BOTTOM_LEFT BOTTOM_RIGHT
             label = "RPG";
             sensor-bindings = <&layer_enc LMMO LTyp &vol_enc>;
             bindings = <
-&kp N1     &kp N2     &kp N3          &kp N4          &kp N5                                     &kp KP_NUMLOCK  &kp KP_N7      &kp KP_N8      &kp KP_N9  &kp PSCRN
-&kp Q      &kp W      &kp E           &kp R           &kp T                                      &emt            &kp KP_N4      &kp KP_N5      &kp KP_N6  &kp KP_N0 
-&kp A      &kp S      &kp D           &kp F           &kp G          &out OUT_TOG     &kp C_MUTE &kp KP_DOT      &kp KP_N1      &kp KP_N2      &kp KP_N3  &fmt
-                      &kp LALT        &kp LSHIFT      &kp LCTL       &lt LNav ESC     &mo LSys   &kp SPACE       &kp BACKSPACE  &lt LSys TAB
+&kp N1   &kp N2   &kp N3   &kp N4   &kp N5          &kp KP_NUMLOCK   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PSCRN
+&kp Q    &kp W    &kp E    &kp R    &kp T           &emt             &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_N0 
+&kp A    &kp S    &kp D    &kp F    &kp G    POTS   &kp KP_DOT       &kp KP_N1   &kp KP_N2   &kp KP_N3   &fmt
+BOTTOM_LEFT_GAMING BOTTOM_RIGHT_GAMING
             >;
         };
 
@@ -188,10 +190,10 @@ BOTTOM_LEFT BOTTOM_RIGHT
             label = "MMO";
             sensor-bindings = <&layer_enc LRPG LTyp &vol_enc>;
             bindings = <
-&kp TAB    &kp Q      &kp W           &kp E           &kp R                                       &kp KP_NUMLOCK  &kp KP_N7      &kp KP_N8  &kp KP_N9  &kp PSCRN
-&kp GRAVE  &kp A      &kp S           &kp D           &kp F                                       &emt            &kp KP_N4      &kp KP_N5  &kp KP_N6  &kp KP_N0 
-&kp N1     &kp N2     &kp N3          &kp N4          &kp N5         &out OUT_TOG     &kp C_MUTE  &kp KP_DOT      &kp KP_N1      &kp KP_N2  &kp KP_N3  &fmt 
-                      &kp LALT        &kp LSHIFT      &kp LCTL       &lt LNav ESC     &mo LSys    &kp SPACE       &kp BACKSPACE  &lt LSys TAB
+&kp TAB     &kp Q    &kp W    &kp E    &kp R           &kp KP_NUMLOCK   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PSCRN
+&kp GRAVE   &kp A    &kp S    &kp D    &kp F           &emt             &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_N0 
+&kp N1      &kp N2   &kp N3   &kp N4   &kp N5   POTS   &kp KP_DOT       &kp KP_N1   &kp KP_N2   &kp KP_N3   &fmt 
+BOTTOM_LEFT_GAMING BOTTOM_RIGHT_GAMING
             >;
         };
     };
