@@ -18,10 +18,10 @@
 #define LRPG 6
 #define LMMO 7
 
-#define BOTTOM_LEFT           &mo LSys      &kp BACKSPACE   &stck_sym       &lt LNav ESC
-#define BOTTOM_LEFT_GAMING    &kp LALT      &kp LSHIFT      &kp LCTL        &lt LNav ESC     
-#define BOTTOM_RIGHT          &stck_shift   &kp SPACE       &kp DELETE      &lt LAlt INSERT
-#define BOTTOM_RIGHT_GAMING   &mo LSys      &kp SPACE       &kp BACKSPACE   &lt LSys TAB
+#define BOTTOM_LEFT           &mo LSys     &kp BACKSPACE   &stck_sym       &lt LNav ESC
+#define BOTTOM_LEFT_GAMING    &kp LALT     &kp LSHIFT      &kp LCTL        &lt LNav ESC     
+#define BOTTOM_RIGHT          &stck_shft   &kp SPACE       &kp DELETE      &lt LAlt INSERT
+#define BOTTOM_RIGHT_GAMING   &mo LSys     &kp SPACE       &kp BACKSPACE   &lt LSys TAB
 #define POTS &out OUT_TOG &kp C_MUTE
 
 nice_view_spi: &spi0 {
